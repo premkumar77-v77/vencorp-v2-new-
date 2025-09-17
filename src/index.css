@@ -1,0 +1,403 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Futuristic AI Color Palette */
+    --primary: 250 100% 70%;
+    --primary-foreground: 0 0% 5%;
+    --primary-glow: 280 100% 80%;
+    --secondary: 195 100% 50%;
+    --secondary-glow: 195 100% 70%;
+    
+    --neon-pink: 320 100% 70%;
+    --neon-cyan: 180 100% 50%;
+    --neon-purple: 270 100% 70%;
+    --electric-blue: 220 100% 60%;
+    
+    --muted: 240 5.9% 10%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 20%;
+    --input: 240 5.9% 20%;
+    --ring: 250 100% 70%;
+
+    --radius: 0.75rem;
+
+    /* Futuristic Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    --gradient-mesh: radial-gradient(ellipse at top, hsl(var(--primary) / 0.3), transparent),
+                     radial-gradient(ellipse at bottom, hsl(var(--neon-cyan) / 0.2), transparent),
+                     radial-gradient(ellipse at right, hsl(var(--neon-pink) / 0.25), transparent);
+    
+    --glass-bg: rgba(15, 15, 15, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glow-shadow: 0 0 50px hsl(var(--primary) / 0.5);
+    --neon-glow: 0 0 20px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.4);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Futuristic Glass Morphism */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glow-shadow);
+  }
+  
+  .glass-hover {
+    @apply glass;
+    transition: var(--transition-spring);
+  }
+  
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: hsl(var(--primary) / 0.4);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--neon-glow);
+  }
+
+  /* Animated Gradient Backgrounds */
+  .gradient-mesh {
+    background: var(--gradient-mesh);
+    background-size: 400% 400%;
+    animation: gradient-shift 20s ease infinite;
+  }
+  
+  .hero-futuristic {
+    background: radial-gradient(ellipse at center top, hsl(var(--primary) / 0.15), transparent 70%),
+                radial-gradient(ellipse at center bottom, hsl(var(--neon-cyan) / 0.1), transparent 70%),
+                linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
+    position: relative;
+  }
+  
+  .hero-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(1000px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+      hsl(var(--primary) / 0.05), transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Neon Glow Effects */
+  .neon-glow {
+    box-shadow: var(--neon-glow);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.8), 0 0 20px hsl(var(--primary) / 0.6);
+  }
+
+  /* Modern Button Styles */
+  .btn-futuristic {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground px-8 py-4 rounded-2xl font-semibold relative overflow-hidden;
+    transition: var(--transition-spring);
+    border: 1px solid hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  
+  .btn-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-futuristic:hover::before {
+    left: 100%;
+  }
+  
+  .btn-futuristic:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--neon-glow);
+  }
+
+  .btn-ghost-futuristic {
+    @apply bg-transparent border-2 text-foreground px-8 py-4 rounded-2xl font-semibold relative;
+    border-color: hsl(var(--primary) / 0.3);
+    transition: var(--transition-spring);
+  }
+  
+  .btn-ghost-futuristic:hover {
+    background: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary) / 0.6);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.4);
+  }
+
+  /* Floating Animation */
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  .floating-delay {
+    animation: floating 6s ease-in-out 2s infinite;
+  }
+
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Bento Box Layout */
+  .bento-grid {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .bento-card {
+    @apply glass-hover p-8 rounded-3xl relative overflow-hidden;
+    background: linear-gradient(135deg, hsl(var(--muted) / 0.5), hsl(var(--muted) / 0.2));
+  }
+  
+  .bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), transparent);
+  }
+}
+
+@layer utilities {
+  /* Advanced Animation Keyframes */
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+  }
+  
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6), 0 0 60px hsl(var(--primary) / 0.4);
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px) scale(0.95); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0) scale(1); 
+    }
+  }
+  
+  @keyframes slide-in-left {
+    from { 
+      opacity: 0; 
+      transform: translateX(-50px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateX(0); 
+    }
+  }
+  
+  @keyframes slide-in-right {
+    from { 
+      opacity: 0; 
+      transform: translateX(50px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateX(0); 
+    }
+  }
+
+  @keyframes typing-cursor {
+    50% { opacity: 0; }
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Animation Classes */
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .typing-cursor {
+    @apply inline-block w-0.5 h-6 align-middle;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--neon-cyan)));
+    animation: typing-cursor 0.8s infinite;
+  }
+
+  /* Advanced Scroll Animations */
+  .section-hidden {
+    @apply opacity-0 translate-y-16 scale-95;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .section-visible {
+    @apply opacity-100 translate-y-0 scale-100;
+  }
+  
+  /* Interactive Hover States */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .gradient-text-secondary {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Scrollbar Hide */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Timeline Specific Animations */
+  .timeline-card {
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .timeline-card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
