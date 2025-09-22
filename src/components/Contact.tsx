@@ -70,28 +70,28 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email Us",
-      details: "hello@vencorp.com",
+      details: "contactus@staciacorp.com",
       description: "Send us an email anytime",
       color: "text-primary"
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      details: "+1 (555) 123-4567",
-      description: "Mon-Fri from 8am to 6pm",
+      details: "+91-9363034150",
+      description: "Mon-Fri from 8:30am to 6:30pm",
       color: "text-neon-cyan"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Visit Us",
-      details: "San Francisco, CA",
-      description: "123 Innovation Drive, Suite 100",
+      details: "Chennai, Tamil Nadu",
+      description: "Ground Floor, C-53, Guindy Industrial Estate, Guindy, Chennai - 32",
       color: "text-neon-pink"
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: "Business Hours",
-      details: "Mon - Fri: 8am - 6pm",
+      details: "Mon - Fri: 8:30am - 6:30pm",
       description: "Weekend: By appointment",
       color: "text-primary"
     }
@@ -229,23 +229,6 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
                 </Button>
               </div>
             </form>
-          </div>
-        </div>
-
-        {/* Additional Info */}
-        <div className="text-center mt-16 space-y-4">
-          <p className="text-foreground/60">
-            Looking for immediate assistance? 
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button className="btn-ghost-futuristic">
-              <Phone className="mr-2 w-4 h-4" />
-              Schedule a Call
-            </Button>
-            <Button className="btn-ghost-futuristic">
-              <Mail className="mr-2 w-4 h-4" />
-              Live Chat Support
-            </Button>
           </div>
         </div>
       </div>

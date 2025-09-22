@@ -136,46 +136,46 @@ const ProjectTimeline = () => {
   };
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 xl:py-24 bg-background relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 border border-primary/10 rounded-full"></div>
-        <div className="absolute bottom-20 right-10 w-24 h-24 border border-neon-cyan/10 rounded-full"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-neon-pink/10 rotate-45"></div>
+        <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-16 sm:w-24 lg:w-32 h-16 sm:h-24 lg:h-32 border border-primary/10 rounded-full"></div>
+        <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-12 sm:w-18 lg:w-24 h-12 sm:h-18 lg:h-24 border border-neon-cyan/10 rounded-full"></div>
+        <div className="absolute top-1/2 left-1/4 w-8 sm:w-12 lg:w-16 h-8 sm:h-12 lg:h-16 border border-neon-pink/10 rotate-45"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold gradient-text mb-4 sm:mb-6">
             Project Timeline
           </h2>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed px-4">
             Track our journey from innovative ideas to successful launches. Each project represents
             a milestone in building the future of entrepreneurship.
           </p>
         </div>
 
         {/* Navigation Controls */}
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-6 sm:mb-8 px-2">
           <Button
             variant="outline"
             size="icon"
             onClick={prevSlide}
-            className="btn-ghost-futuristic"
+            className="btn-ghost-futuristic w-10 h-10 sm:w-12 sm:h-12"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
           
-          <div className="flex space-x-2">
+          <div className="flex space-x-1 sm:space-x-2">
             {projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex 
-                    ? 'bg-primary w-8' 
-                    : 'bg-foreground/20 hover:bg-foreground/40'
+                    ? 'bg-primary w-6 sm:w-8' 
+                    : 'bg-foreground/20 hover:bg-foreground/40 w-2'
                 }`}
               />
             ))}
@@ -185,14 +185,14 @@ const ProjectTimeline = () => {
             variant="outline"
             size="icon"
             onClick={nextSlide}
-            className="btn-ghost-futuristic"
+            className="btn-ghost-futuristic w-10 h-10 sm:w-12 sm:h-12"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
         </div>
 
         {/* Slideshow Container */}
-        <div className="relative h-[600px] overflow-hidden rounded-2xl">
+        <div className="relative h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px] xl:h-[700px] overflow-hidden rounded-xl sm:rounded-2xl">
           {projects.map((project, index) => (
             <div
               key={project.id}
@@ -204,39 +204,39 @@ const ProjectTimeline = () => {
                   : 'translate-x-full opacity-0 z-0'
               }`}
             >
-              <div className="h-full flex items-center justify-center px-4">
+              <div className="h-full flex items-center justify-center px-2 sm:px-4">
                 <div className="max-w-4xl w-full">
                   <Card className="glass hover:scale-[1.02] transition-all duration-500 border-primary/20 hover:border-primary/40 h-full">
-                    <CardHeader className="space-y-4">
-                      <div className="flex justify-between items-start">
-                        <Badge className={`${statusColors[project.status]} px-3 py-1`}>
+                    <CardHeader className="space-y-3 sm:space-y-4 p-4 sm:p-6">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-0">
+                        <Badge className={`${statusColors[project.status]} px-2 sm:px-3 py-1 text-xs sm:text-sm w-fit`}>
                           {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
                         </Badge>
-                        <div className="text-sm text-foreground/60 flex items-center">
-                          <Calendar className="w-4 h-4 mr-1" />
+                        <div className="text-xs sm:text-sm text-foreground/60 flex items-center">
+                          <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                           {project.timeline}
                         </div>
                       </div>
                       
-                      <CardTitle className="text-2xl md:text-3xl font-bold text-foreground">
+                      <CardTitle className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
                         {project.title}
                       </CardTitle>
                       
-                      <CardDescription className="text-foreground/70 leading-relaxed text-lg">
+                      <CardDescription className="text-foreground/70 leading-relaxed text-sm sm:text-base lg:text-lg">
                         {project.description}
                       </CardDescription>
                     </CardHeader>
 
-                    <CardContent className="space-y-6">
+                    <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 pt-0">
                       {/* Progress Bar */}
                       <div className="space-y-2">
-                        <div className="flex justify-between items-center text-sm">
+                        <div className="flex justify-between items-center text-xs sm:text-sm">
                           <span className="text-foreground/60">Progress</span>
                           <span className="text-primary font-medium">{project.progress}%</span>
                         </div>
-                        <div className="w-full bg-background/50 rounded-full h-3">
+                        <div className="w-full bg-background/50 rounded-full h-2 sm:h-3">
                           <div 
-                            className="bg-gradient-to-r from-primary to-neon-cyan h-3 rounded-full transition-all duration-1000 ease-out"
+                            className="bg-gradient-to-r from-primary to-neon-cyan h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out"
                             style={{ 
                               width: `${index === currentIndex ? project.progress : 0}%`,
                               transitionDelay: index === currentIndex ? '0.5s' : '0s'
@@ -246,45 +246,45 @@ const ProjectTimeline = () => {
                       </div>
 
                       {/* Project Stats */}
-                      <div className="grid grid-cols-2 gap-6 text-sm">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 text-xs sm:text-sm">
                         <div className="flex items-center text-foreground/60">
-                          <Users className="w-5 h-5 mr-2" />
+                          <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                           <span>{project.team} team members</span>
                         </div>
                         <div className="flex items-center text-foreground/60">
-                          <Clock className="w-5 h-5 mr-2" />
+                          <Clock className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                           <span>{project.date}</span>
                         </div>
                       </div>
 
                       {/* Metrics (for launched projects) */}
                       {project.metrics && (
-                        <div className="grid grid-cols-3 gap-4 p-4 border border-primary/20 rounded-xl bg-background/30">
+                        <div className="grid grid-cols-3 gap-2 sm:gap-4 p-3 sm:p-4 border border-primary/20 rounded-xl bg-background/30">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-primary">{project.metrics.users}</div>
-                            <div className="text-sm text-foreground/60">Users</div>
+                            <div className="text-lg sm:text-xl lg:text-2xl font-bold text-primary">{project.metrics.users}</div>
+                            <div className="text-xs sm:text-sm text-foreground/60">Users</div>
                           </div>
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-neon-cyan">{project.metrics.revenue}</div>
-                            <div className="text-sm text-foreground/60">Revenue</div>
+                            <div className="text-lg sm:text-xl lg:text-2xl font-bold text-neon-cyan">{project.metrics.revenue}</div>
+                            <div className="text-xs sm:text-sm text-foreground/60">Revenue</div>
                           </div>
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-neon-pink flex items-center justify-center">
-                              <TrendingUp className="w-5 h-5 mr-1" />
+                            <div className="text-lg sm:text-xl lg:text-2xl font-bold text-neon-pink flex items-center justify-center">
+                              <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 mr-1" />
                               {project.metrics.growth}
                             </div>
-                            <div className="text-sm text-foreground/60">Growth</div>
+                            <div className="text-xs sm:text-sm text-foreground/60">Growth</div>
                           </div>
                         </div>
                       )}
 
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1 sm:gap-2">
                         {project.tags.map((tag) => (
                           <Badge
                             key={tag}
                             variant="outline"
-                            className="text-sm bg-background/50 border-primary/30 text-foreground/70 hover:border-primary/60"
+                            className="text-xs sm:text-sm bg-background/50 border-primary/30 text-foreground/70 hover:border-primary/60"
                           >
                             {tag}
                           </Badge>
@@ -293,7 +293,7 @@ const ProjectTimeline = () => {
 
                       {/* Action Button */}
                       <Button 
-                        className="w-full btn-ghost-futuristic group mt-6"
+                        className="w-full btn-ghost-futuristic group mt-4 sm:mt-6 text-sm sm:text-base"
                         disabled={project.status === 'planning'}
                       >
                         <span>
@@ -311,18 +311,18 @@ const ProjectTimeline = () => {
         </div>
 
         {/* Play/Pause Control */}
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-6 sm:mt-8">
           <Button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="btn-ghost-futuristic"
+            className="btn-ghost-futuristic text-sm sm:text-base"
           >
             {isPlaying ? 'Pause Slideshow' : 'Play Slideshow'}
           </Button>
         </div>
 
         {/* Project Counter */}
-        <div className="text-center mt-4 text-foreground/60">
-          <span className="text-sm">
+        <div className="text-center mt-3 sm:mt-4 text-foreground/60">
+          <span className="text-xs sm:text-sm">
             {currentIndex + 1} of {projects.length} projects
           </span>
         </div>
